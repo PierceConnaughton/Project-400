@@ -51,7 +51,7 @@ def getTimeline(handle):
     timeline = twitterAPI.GetUserTimeline(screen_name=handle, count=200, include_rts=False)
     return timeline
 
-def getPopularTweets(term):
+def getPopularTweetsTerm(term):
     
     #term: what to search by. Optional if you include geocode.
     #since_id: get results more recent then specified ID
@@ -65,7 +65,15 @@ def getPopularTweets(term):
     #return_json: if true returns data as json instead of twitter.Userret
     
     search = twitterAPI.GetSearch(term = term, raw_query=None, geocode=None, since_id=None, max_id=None, until=None, 
-              since=None, count=200, lang=None, locale=None, result_type='popular', include_entities=True, 
+              since=None, count=20000, lang=None, locale=None, result_type='popular', include_entities=True, 
+              return_json=True)
+    
+    return search
+
+def getPopularTweets():
+    
+    search = twitterAPI.GetSearch(raw_query=None, geocode=None, since_id=None, max_id=None, until=None, 
+              since=None, count=20000, lang=None, locale=None, result_type='popular', include_entities=True, 
               return_json=True)
     
     return search
