@@ -1,0 +1,22 @@
+<MyGrid>:
+    tweet: tweet
+
+    MDGridLayout:
+        adaptive_size: True
+        cols:3
+        size: root.width, root.height
+
+        MDLabel:
+            text: "Tweet: "
+
+        MDFlatButton:
+            text:"Submit"
+            pos_hint: {'center_x':0.5}
+            on_press: root.pressed()
+
+        MDTextField:
+            id: tweet
+            hint_text: "No helper text"
+            multinline:False
+                
+        
