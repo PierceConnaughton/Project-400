@@ -1,6 +1,7 @@
 from typing import Text
 import kivymd
 import Load_Sentiment as sentiment
+import Load_Generation as generate
 import Twitter_API as api
 from IPython import get_ipython
 from kivymd.app import MDApp
@@ -17,23 +18,46 @@ from kivy.properties import ObjectProperty, StringProperty
 #create a grid using the grid layout class from kivy        
 class MyGrid(MDGridLayout):
     tweet = ObjectProperty(None)
+
+    def resetScreen(self):
+                self.tweet.text = ""
+                self.ids.tweet_generated.text = "Screen Reset"
+                self.ids.tweet_sentiment.text = "Screen Reset"
     
+    def PostTweet(text):
+
+        text = 'this a test tweet:' + text
+        #post status to twitter
+        api.postStatus(text)
 
     #pressed method, when a button is pressed get the name value and print it too the console
     def pressed(self):
         text = self.tweet.text
-        prediction = sentiment.predict(text)
+        
 
-        self.ids.tweet_sentiment.text = f'{prediction} sentiment'
+        if text == '' :
+            MyGrid.resetScreen(self)
+        
+        else:
 
-        #print name to screen
-        print("Tweet:", text, " Sentiment: ", prediction)
+            generated = generate.generateTweet(text)
 
-        #post status to twitter
-        #api.postStatus(text)  
+            self.ids.tweet_generated.text = f'{generated} '
 
-        #reset name to plank
-        self.tweet.text = ""  
+
+            #Check sentiment of generated tweet
+            prediction = sentiment.predict(generated)
+        
+            self.ids.tweet_sentiment.text = f'{prediction} sentiment'
+
+
+            #print name to screen
+            print("Tweet:", text, " Sentiment: ", prediction, " Tweet Generated: ", generated)
+
+            #reset name to plank
+            self.tweet.text = ""
+
+
 
            
 
