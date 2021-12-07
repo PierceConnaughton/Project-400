@@ -1,22 +1,40 @@
 <MyGrid>:
     tweet: tweet
+    cols: 2 
+    rows: 3
 
-    MDGridLayout:
-        adaptive_size: True
-        cols:3
-        size: root.width, root.height
+    
+    MDTextField:
+        id: tweet
+        hint_text: "Tweet text"
+        pos_hint: {'center_x':0.5}
+        width: 300
+    
+    MDFlatButton:
+        text:"Submit"
+        pos_hint: {'center_x':0.5}
+        on_press: root.pressed()
 
-        MDLabel:
-            text: "Tweet: "
+    MDLabel:
+        text: "Sentiment: "
+        pos_hint: {'center_x':0.5}
+    
+    MDLabel:
+        id: tweet_sentiment
+        text: "No Sentiment"
+        pos_hint: {'center_x':0.5}
 
-        MDFlatButton:
-            text:"Submit"
-            pos_hint: {'center_x':0.5}
-            on_press: root.pressed()
+    MDLabel:
+        text: "Generated Text: "
+        pos_hint: {'center_x':0.5}
+    
+    MDLabel:
+        id: tweet_generated
+        text: "No Tweet Generated"
+        pos_hint: {'center_x':0.5}
 
-        MDTextField:
-            id: tweet
-            hint_text: "No helper text"
-            multinline:False
+   
+
+
                 
         
