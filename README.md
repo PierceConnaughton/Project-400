@@ -1,4 +1,4 @@
-# Project-400 Refrences
+# Project-400 references
 #1 Tal L. (2018). Trump Tweet Generator (LSTM for Text Generation). [online] Available at: https://www.kaggle.com/talevy23/trump-tweet-generator-lstm-for-text-generation. For Trump Tweets fot tweet generation
 
 #2 Erik S. (2020). Deploying Your Kivy/Python App to Android with Buildozer. [online] Available at: https://www.youtube.com/watch?v=EupAeyL8zAo. To package App
